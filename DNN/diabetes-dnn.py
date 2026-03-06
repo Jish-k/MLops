@@ -14,10 +14,11 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import to_categorical 
-X = [[30],[40],[50],[60],[20],[10],[70]]
-y = [0,1,1,1,0,0,1]
+df = pd.read_csv("NBD.csv")
+x=df.drop('diabetes',axis=1)
+y=df['diabetes']
 model = Sequential()
-model.add(Dense(500, activation='relu', input_dim=1))
+model.add(Dense(500, activation='relu', input_dim=2))
 model.add(Dense(100, activation='relu'))
 model.add(Dense(50, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
@@ -26,6 +27,6 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam', 
               loss='binary_crossentropy', 
               metrics=['accuracy'])
-model.fit(X,y, epochs=100)
-X_marks=np.array([[20]])
+model.fit(x,y, epochs=100)
+X_marks=[[45,63]]
 print(model.predict(X_marks))

@@ -26,6 +26,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam', 
               loss='binary_crossentropy', 
               metrics=['accuracy'])
-model.fit(X,y, epochs=100)
+model.fit(X,y, epochs=150)
 X_marks=np.array([[20]])
+
 print(model.predict(X_marks))
